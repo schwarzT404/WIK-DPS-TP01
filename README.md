@@ -2,11 +2,20 @@
 
 API HTTP en Rust qui retourne les headers de la requête au format JSON pour les requêtes GET sur `/ping`.
 
-## Fonctionnalités
+## Partie 1: API HTTP
 
-- Écoute sur un port configurable via la variable d'environnement `PING_LISTEN_PORT` (8080 par défaut)
-- Retourne les headers HTTP au format JSON pour les requêtes GET sur `/ping`
-- Retourne une réponse vide avec code 404 pour toute autre requête
+### Comportement spécifique
+
+- GET /ping: Renvoie les headers HTTP au format JSON (code 200)
+- Toute autre requête: Renvoie une réponse vide avec code 404 et affiche un message dans la console du serveur
+
+Le serveur affiche également des messages lors du démarrage et pour chaque erreur 404.
+
+## Partie 2: Analyse de vulnérabilité (Bonus)
+
+Une analyse de la vulnérabilité de l'application "dwidder" a été réalisée. Voir le fichier [VULNERABILITY_ANALYSIS.md](VULNERABILITY_ANALYSIS.md) pour le rapport détaillé.
+
+La vulnérabilité identifiée permet de s'inscrire sans code d'invitation en exploitant une injection de paramètres et une validation incohérente côté serveur.
 
 ## Prérequis
 

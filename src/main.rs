@@ -80,6 +80,7 @@ fn handle_connection(mut stream: TcpStream) {
                 }
             } else {
                 // Pour toute autre requête, réponse 404 Not Found vide
+                println!("Erreur 404: Requête {} {} non reconnue", parts.get(0).unwrap_or(&""), parts.get(1).unwrap_or(&""));
                 let response = "HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\nConnection: close\r\n\r\n";
                 if let Err(e) = stream.write_all(response.as_bytes()) {
                     eprintln!("Erreur lors de l'envoi de la réponse 404: {}", e);
